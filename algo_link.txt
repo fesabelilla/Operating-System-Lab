@@ -1,3 +1,6 @@
 SRTN : http://programmingearth.com/post.php?pageid=69&title=C%20program%20for%20shortest%20remaining%20time%20first%20scheduling%20algorithm.
 
 RR : https://www.geeksforgeeks.org/program-round-robin-scheduling-set-1/
+
+Consumer&Producer : code : https://www.mkyong.com/java/java-blockingqueue-examples/
+Tutorial : https://www.youtube.com/watch?v=UOr9kMCCa5g
