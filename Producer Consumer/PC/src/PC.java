@@ -10,6 +10,7 @@ class Q {
     int item;
     int head = 0, tail = 0;
     int[] store = new int[100];
+    
     // semCon initialized with 0 permits
     // to ensure put() executes first
 
@@ -26,17 +27,18 @@ class Q {
     void get(int CID) throws InterruptedException {
 
         System.out.println("Consumer C" + CID + " is trying to down the fullcount ");
+        
         fullcount.acquire();
-
         mutex.acquire();
+        
         item = store[head];
         head++;
+        
         System.out.println("Consumer C" + CID + " is trying to increase the the Emptycount ");
-
+        System.out.println("Consumer  C" + CID + " Consumed item : " + item);
+        
         mutex.release();
         emptyCount.release();
-
-        System.out.println("Consumer  C" + CID + " Consumed item : " + item);
 
     }
 
@@ -44,20 +46,17 @@ class Q {
     void put(int item, int PID) throws InterruptedException {
 
         System.out.println("Producer P" + PID + " is trying to down the emptycount ");
+       
         emptyCount.acquire();
-
         mutex.acquire();
 
         store[tail] = item;
         tail++;
         System.out.println("Producer P" + PID + " is trying to increase the the Fullcount ");
+        System.out.println("Producer P" + PID + " put item : " + item);
 
         mutex.release();
         fullcount.release();
-
-        System.out.println("Producer P" + PID + " put item : " + item);
-
-
     }
 }
 
